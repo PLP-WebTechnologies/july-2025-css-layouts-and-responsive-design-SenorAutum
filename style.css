@@ -1,0 +1,91 @@
+/* --- Basic Setup & Mobile-First Styles --- */
+/* These styles apply to all screen sizes unless overridden later. */
+
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Using relative units for flexible padding */
+.site-header, .site-footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem; /* rem is a great relative unit */
+}
+
+.main-content, .sidebar {
+    padding: 1rem;
+}
+
+/* --- FLEXBOX in Action: Navigation Bar --- */
+/* We use Flexbox here for simple, one-dimensional alignment of the nav links. */
+.site-nav {
+    display: flex;
+    justify-content: space-around; /* Distributes items evenly */
+    background-color: #444;
+    padding: 0.5rem 0;
+}
+
+.site-nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+/* --- FLEXBOX in Action: Article Cards --- */
+/* We use Flexbox to manage the layout of the cards inside the main content area. */
+.card-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows cards to wrap to the next line */
+    gap: 1rem; /* A modern way to add space between flex items */
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    /* Flex-grow, flex-shrink, flex-basis. This makes cards flexible. */
+    flex: 1 1 250px; 
+}
+
+
+/* --- RESPONSIVE DESIGN: Media Queries --- */
+
+/* --- Tablet Breakpoint (768px and up) --- */
+/* At this screen size, we introduce the main Grid layout. */
+@media (min-width: 768px) {
+    
+    /* --- GRID in Action: Main Page Layout --- */
+    /* We use Grid for the main two-dimensional layout (content + sidebar). */
+    .site-wrapper {
+        display: grid;
+        /* Creates two columns: the main content takes 3 parts of the space, sidebar takes 1 part. */
+        grid-template-columns: 3fr 1fr; 
+        gap: 1.5rem; /* Space between the grid columns */
+        padding: 1.5rem;
+    }
+
+    /* We remove the default padding since the grid gap handles it now. */
+    .main-content, .sidebar {
+        padding: 0;
+    }
+}
+
+/* --- Desktop Breakpoint (1024px and up) --- */
+/* At larger screen sizes, we can increase the overall width and font size for better readability. */
+@media (min-width: 1024px) {
+    body {
+        font-size: 1.1rem; /* Increase base font size */
+    }
+
+    /* Constrain the max width on very large screens */
+    .site-header, .site-nav, .site-wrapper, .site-footer {
+        max-width: 1200px;
+        margin: 0 auto; /* Center the layout */
+    }
+}
